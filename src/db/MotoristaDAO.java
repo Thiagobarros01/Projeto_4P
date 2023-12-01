@@ -33,12 +33,14 @@ public class MotoristaDAO {
 		Conexao conexao = new Conexao();
 		try {
 			PreparedStatement stmt = conexao.getConnection().prepareStatement(
-					"UPDATE Motorista SET Nome = ?, Sobrenome = ?, Email = ? , Senha = ? WHERE ID_Motorista = ?");
+					"UPDATE Motorista SET Nome = ?, Sobrenome = ?, Email = ? , Senha = ? , cpf = ? , telefone = ? WHERE ID_Motorista = ?");
 			stmt.setString(1, motorista.getNome());
 			stmt.setString(2, motorista.getSobrenome());
 			stmt.setString(3, motorista.getEmail());
-			stmt.setInt(4, motorista.getIdMotorista());
 			stmt.setString(4, motorista.getSenha());
+			stmt.setString(5, motorista.getCpf());
+			stmt.setString(6, motorista.getTelefone());
+			stmt.setInt(7, motorista.getIdMotorista());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

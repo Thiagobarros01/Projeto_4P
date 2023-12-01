@@ -33,12 +33,14 @@ public class AjudanteDAO {
 		Conexao conexao = new Conexao();
 		try {
 			PreparedStatement stmt = conexao.getConnection().prepareStatement(
-					"UPDATE Ajudante SET Nome = ?, Sobrenome = ?, Email = ?, Senha = ? WHERE ID_Ajudante = ?");
+					"UPDATE Ajudante SET Nome = ?, Sobrenome = ?, Email = ?, Senha = ?, cpf = ?, telefone = ? WHERE ID_Ajudante = ?");
 			stmt.setString(1, ajudante.getNome());
 			stmt.setString(2, ajudante.getSobrenome());
 			stmt.setString(3, ajudante.getEmail());
 			stmt.setString(4, ajudante.getSenha());
-			stmt.setInt(5, ajudante.getIdAjudante());
+			stmt.setString(5, ajudante.getCpf());
+			stmt.setString(6, ajudante.getSenha());
+			stmt.setInt(7, ajudante.getIdAjudante());
 
 			stmt.executeUpdate();
 		} catch (SQLException e) {
