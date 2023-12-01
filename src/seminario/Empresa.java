@@ -8,18 +8,18 @@ public class Empresa {
 	private String contatoNome;
 	private String contatoTelefone;
 
-	public Empresa(String nomeEmpresa, String cnpj, String endereco, String contatoNome,
-			String contatoTelefone) {
-		
+	public Empresa(String nomeEmpresa, String cnpj, String endereco, String contatoNome, String contatoTelefone) {
+
 		this.nomeEmpresa = nomeEmpresa;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
 		this.contatoNome = contatoNome;
 		this.contatoTelefone = contatoTelefone;
 	}
-	public Empresa(String nomeEmpresa, String cnpj, String endereco, String contatoNome,
-			String contatoTelefone,int id) {
-		
+
+	public Empresa(String nomeEmpresa, String cnpj, String endereco, String contatoNome, String contatoTelefone,
+			int id) {
+
 		this.nomeEmpresa = nomeEmpresa;
 		this.cnpj = cnpj;
 		this.endereco = endereco;
@@ -74,6 +74,13 @@ public class Empresa {
 
 	public void setContatoTelefone(String contatoTelefone) {
 		this.contatoTelefone = contatoTelefone;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"ID: %d\nEmpresa: %s\nCnpj: %s\nEndereço: %s\nNome do contato: %s\nTelefone: %s ",
+				idEmpresa, nomeEmpresa, cnpj, endereco, contatoNome, contatoTelefone);
 	}
 
 }

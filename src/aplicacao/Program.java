@@ -258,6 +258,9 @@ public class Program {
 				int y = sc.nextInt();
 				empresaDAO.deletarEmpresa(y);
 				System.out.println("Deletado com sucesso!");
+				
+			} else if(x==4) {
+				empresaDAO.buscarTodasEmpresas().forEach(empresa -> System.out.println(empresa));
 			}
 		}
 		sc.close();

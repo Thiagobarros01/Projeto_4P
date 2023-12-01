@@ -3,7 +3,6 @@ package db;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,11 +50,32 @@ public class EmpresaDAO {
 					.prepareStatement("DELETE FROM Empresa WHERE ID_Empresa = ?");
 			stmt.setInt(1, idEmpresa);
 			stmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
+	public List<Empresa> buscarTodasEmpresas() {
 
+		Conexao conexao = new Conexao();
+		List<Empresa> empresas = new ArrayList<Empresa>();
+
+		try {
+
+			PreparedStatement stmt = conexao.getConnection().prepareStatement("SELECT * FROM empresa");
+
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Empresa empresa = new Empresa(rs.getString("nomeempresa"), rs.getString("cnpj"),
+						rs.getString("endereco"), rs.getString("contatonome"), rs.getString("ContatoTelefone"),
+						rs.getInt("id_empresa"));
+				empresas.add(empresa);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return empresas;
+	}
 }
